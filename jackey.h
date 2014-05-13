@@ -19,8 +19,10 @@
 
    This is a kludge around Jack only supporting MIDI, particularly for OSC.
    This property is a comma-separated list of event types, currently "MIDI" or
-   "OSC".  If this contains "OSC", the port may carry OSC bundles (first byte
-   '#') or OSC messages (first byte '/').  Note that the "status byte" of both
+   "OSC".  If this contains "OSC", the port may carry OSC messages (first byte '/').
+   Note that OSC bundles (first byte '#') as a means of scheduling OSC messages
+   are redundant (Jack events already carry a sample accurate timestamp) and 
+   thus discouraged to use inside Jack. Further note that the "status byte" of
    OSC events is not a valid MIDI status byte, so MIDI clients that check the
    status byte will gracefully ignore OSC messages if the user makes an
    inappropriate connection.
